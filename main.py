@@ -7,7 +7,7 @@
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
 from art import logo
-import random
+from random import randint
 
 print(logo)
 print("\nWelcome to Guess The Number Game!")
@@ -25,7 +25,7 @@ def set_difficulty(difficulty):
 guesses = set_difficulty(difficulty)
 print("\nYou Selected {} Mode. You Have {} Guesses.".format(difficulty.title(), guesses))
 
-answer = random.randint(1, 101)
+answer = randint(1, 101)
 print("Answer is", answer)
 
 guess = input("Guess A Number: ")
@@ -34,6 +34,12 @@ def match(guess):
     if guess == answer:
         print("You Win!")
         return True
+    
     else:
-        print("You Lose!")
-        return False
+        if guess > answer:
+            print("Too High!")
+            return False
+        
+        elif guess < answer:
+            print("Too Low!")
+            return False
