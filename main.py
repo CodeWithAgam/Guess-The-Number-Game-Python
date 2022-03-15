@@ -11,6 +11,7 @@ from random import randint
 
 print(logo)
 print("\nWelcome to Guess The Number Game!")
+print("\nI have a number between 1 and 100. Can you guess it?")
 
 difficulty = input("Choose a Difficulty Level 'Easy' or 'Hard': ").lower()
 
