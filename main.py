@@ -12,7 +12,7 @@ from random import randint
 print(logo)
 print("\nWelcome to Guess The Number Game!")
 
-difficulty = input("Choose A Difficulty Level 'Easy' or 'Hard': ").lower()
+difficulty = input("Choose a Difficulty Level 'Easy' or 'Hard': ").lower()
 
 def set_difficulty(difficulty):
     if difficulty == "easy":
@@ -26,20 +26,35 @@ guesses = set_difficulty(difficulty)
 print("\nYou Selected {} Mode. You Have {} Guesses.".format(difficulty.title(), guesses))
 
 answer = randint(1, 101)
-print("Answer is", answer)
-
-guess = input("Guess A Number: ")
+guess = int(input("Guess a number between 1 and 100: "))
 
 def match(guess):
+    global guesses
     if guess == answer:
+        print(f"You guessed it! The answer was {answer}")
         print("You Win!")
         return True
     
     else:
         if guess > answer:
             print("Too High!")
+            guesses -= 1
             return False
         
         elif guess < answer:
             print("Too Low!")
+            guesses -= 1
             return False
+
+result = match(guess)
+
+while result == False:
+    if not guesses == 0:
+        print("You have {} guesses left.".format(guesses))
+        guess = int(input("Guess again: "))
+        result = match(guess)
+
+    elif guesses == 0:
+        print(f"You have no more guesses left. The number was {answer}")
+        print("You Lose!")
+        break
