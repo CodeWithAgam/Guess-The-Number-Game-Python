@@ -15,10 +15,13 @@ print("\nWelcome to Guess The Number Game!")
 difficulty = input("Choose a Difficulty Level 'Easy' or 'Hard': ").lower()
 
 def set_difficulty(difficulty):
+    """Set the difficulty level"""
     if difficulty == "easy":
         return 10
+    
     elif difficulty == "hard":
         return 5
+    
     else:
         print("Invalid difficulty level. Please choose Easy or Hard.")
 
@@ -29,6 +32,7 @@ answer = randint(1, 101)
 guess = int(input("Guess a number between 1 and 100: "))
 
 def match(guess):
+    """Check if the guess is correct or not"""
     global guesses
     if guess == answer:
         print(f"You guessed it! The answer was {answer}")
